@@ -9,6 +9,23 @@
 	import { pageTitle } from '$lib/site';
 	import type { PageData } from './$types';
 	import { onMount, tick } from 'svelte';
+	import {
+		ChevronRight,
+		CircleHelp,
+		Code,
+		FilePlus2,
+		FileText,
+		FolderPlus,
+		Folder,
+		List,
+		ListOrdered,
+		Pencil,
+		Link2,
+		Quote,
+		SquareChevronRight,
+		Trash2,
+		X
+	} from '@lucide/svelte';
 
 	let { data }: { data: PageData } = $props();
 
@@ -523,117 +540,25 @@
 
 {#snippet toolIcon(name: string)}
 	{#if name === 'bullets'}
-		<svg
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="1.7"
-			aria-hidden="true"
-		>
-			<path d="M9 6h11M9 12h11M9 18h11" stroke-linecap="round" />
-			<circle cx="4.5" cy="6" r="1.4" fill="currentColor" stroke="none" />
-			<circle cx="4.5" cy="12" r="1.4" fill="currentColor" stroke="none" />
-			<circle cx="4.5" cy="18" r="1.4" fill="currentColor" stroke="none" />
-		</svg>
+		<List size={16} strokeWidth={1.7} aria-hidden="true" />
 	{:else if name === 'numbers'}
-		<svg
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="1.7"
-			aria-hidden="true"
-		>
-			<path d="M10 6h10M10 12h10M10 18h10" stroke-linecap="round" />
-			<text x="3" y="8" font-size="7" fill="currentColor" stroke="none">1</text>
-			<text x="3" y="14" font-size="7" fill="currentColor" stroke="none">2</text>
-			<text x="3" y="20" font-size="7" fill="currentColor" stroke="none">3</text>
-		</svg>
+		<ListOrdered size={16} strokeWidth={1.7} aria-hidden="true" />
 	{:else if name === 'quote'}
-		<svg
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="1.7"
-			aria-hidden="true"
-		>
-			<path d="M6 6v12" stroke-linecap="round" />
-			<path d="M10 9h9M10 15h6" stroke-linecap="round" />
-		</svg>
+		<Quote size={16} strokeWidth={1.7} aria-hidden="true" />
 	{:else if name === 'code'}
-		<svg
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="1.7"
-			aria-hidden="true"
-		>
-			<path d="m9 8-4 4 4 4M15 8l4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
-		</svg>
+		<Code size={16} strokeWidth={1.7} aria-hidden="true" />
 	{:else if name === 'codeblock'}
-		<svg
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="1.7"
-			aria-hidden="true"
-		>
-			<rect x="3" y="4" width="18" height="16" rx="2" />
-			<path
-				d="m9.5 10-2.5 2 2.5 2M14.5 10l2.5 2-2.5 2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-			/>
-		</svg>
+		<SquareChevronRight size={16} strokeWidth={1.7} aria-hidden="true" />
 	{:else if name === 'link'}
-		<svg
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="1.7"
-			aria-hidden="true"
-		>
-			<path
-				d="M10 14a4 4 0 0 1 0-5.7l2.3-2.3a4 4 0 0 1 5.7 5.7L16.5 13"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-			/>
-			<path
-				d="M14 10a4 4 0 0 1 0 5.7l-2.3 2.3a4 4 0 0 1-5.7-5.7L7.5 11"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-			/>
-		</svg>
+		<Link2 size={16} strokeWidth={1.7} aria-hidden="true" />
 	{/if}
 {/snippet}
 
 {#snippet glyph(kind: 'folder' | 'file')}
 	{#if kind === 'folder'}
-		<svg
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="1.6"
-			aria-hidden="true"
-		>
-			<path
-				d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
-				stroke-linejoin="round"
-			/>
-		</svg>
+		<Folder size={15} strokeWidth={1.6} aria-hidden="true" />
 	{:else}
-		<svg
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="1.6"
-			aria-hidden="true"
-		>
-			<path
-				d="M13 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9z"
-				stroke-linejoin="round"
-			/>
-			<path d="M13 3v6h6" stroke-linejoin="round" />
-		</svg>
+		<FileText size={15} strokeWidth={1.6} aria-hidden="true" />
 	{/if}
 {/snippet}
 
@@ -668,9 +593,7 @@
 							aria-expanded={!!expanded[node.path]}
 							onclick={() => toggleFolder(node.path)}
 						>
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-								<path d="m9 6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
-							</svg>
+							<ChevronRight size={12} strokeWidth={2} aria-hidden="true" />
 						</button>
 					{:else}
 						<span class="tree-twisty is-leaf"></span>
@@ -698,10 +621,7 @@
 							aria-label={`Rename ${node.name}`}
 							onclick={() => startRename(node)}
 						>
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-								<path d="M4 20h4l10-10-4-4L4 16z" stroke-linecap="round" stroke-linejoin="round" />
-								<path d="m13.5 6.5 4 4" stroke-linecap="round" />
-							</svg>
+							<Pencil size={15} strokeWidth={1.6} aria-hidden="true" />
 						</button>
 						<button
 							type="button"
@@ -710,13 +630,7 @@
 							aria-label={`Delete ${node.name}`}
 							onclick={() => confirmDelete(node)}
 						>
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-								<path
-									d="M4 7h16M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-								/>
-							</svg>
+							<Trash2 size={15} strokeWidth={1.6} aria-hidden="true" />
 						</button>
 					</span>
 				</div>
@@ -747,14 +661,7 @@
 						disabled={!data.path}
 						onclick={() => startCreate('file')}
 					>
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-							<path
-								d="M13 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9z"
-								stroke-linejoin="round"
-							/>
-							<path d="M13 3v6h6" stroke-linejoin="round" />
-							<path d="M12 12v4M10 14h4" stroke-linecap="round" />
-						</svg>
+						<FilePlus2 size={15} strokeWidth={1.6} aria-hidden="true" />
 					</button>
 					<button
 						type="button"
@@ -764,13 +671,7 @@
 						disabled={!data.path}
 						onclick={() => startCreate('folder')}
 					>
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-							<path
-								d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
-								stroke-linejoin="round"
-							/>
-							<path d="M12 11v4M10 13h4" stroke-linecap="round" />
-						</svg>
+						<FolderPlus size={15} strokeWidth={1.6} aria-hidden="true" />
 					</button>
 				</div>
 			</div>
@@ -827,15 +728,7 @@
 								aria-label="Dismiss notification"
 								onclick={() => (notice = null)}
 							>
-								<svg
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="1.8"
-									aria-hidden="true"
-								>
-									<path d="m6 6 12 12M18 6 6 18" stroke-linecap="round" />
-								</svg>
+								<X size={14} strokeWidth={1.8} aria-hidden="true" />
 							</button>
 						</div>
 						{#if notice.type === 'ok'}
@@ -874,21 +767,8 @@
 								aria-expanded={helpOpen}
 								onclick={openHelp}
 							>
-								<svg
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="1.7"
-									aria-hidden="true"
-								>
-									<circle cx="12" cy="12" r="9" />
-									<path
-										d="M9.7 9.5a2.4 2.4 0 1 1 3.1 2.2c-.7.3-1.1.9-1.1 1.6v.2"
-										stroke-linecap="round"
-									/>
-									<path d="M12 16.6h.01" stroke-linecap="round" />
-								</svg>
-								Help
+							<CircleHelp size={15} strokeWidth={1.7} aria-hidden="true" />
+							Help
 							</button>
 							<a
 								href={resolve('/logs/[...path]', { path: data.file.path })}
@@ -1038,16 +918,8 @@
 											title="Remove image"
 											onclick={() => removeImage(image.id)}
 										>
-											<svg
-												viewBox="0 0 24 24"
-												fill="none"
-												stroke="currentColor"
-												stroke-width="2"
-												aria-hidden="true"
-											>
-												<path d="m6 6 12 12M18 6 6 18" stroke-linecap="round" />
-											</svg>
-										</button>
+								<X size={14} strokeWidth={2} aria-hidden="true" />
+							</button>
 									</div>
 								{/each}
 							</div>
@@ -1134,10 +1006,7 @@
 						class="iconbtn"
 						aria-label="Close writing guide"
 						onclick={() => (helpOpen = false)}
-					>
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-							<path d="m6 6 12 12M18 6 6 18" stroke-linecap="round" />
-						</svg>
+					>					<X size={15} strokeWidth={1.7} aria-hidden="true" />
 					</button>
 				</div>
 

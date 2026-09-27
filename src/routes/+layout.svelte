@@ -4,6 +4,7 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import { afterNavigate } from '$app/navigation';
+	import { BookOpen, CircleUserRound, House, List, LogOut, Menu, SquarePen } from '@lucide/svelte';
 
 	let { children, data } = $props();
 
@@ -30,77 +31,17 @@
 
 {#snippet icon(name: string)}
 	{#if name === 'home'}
-		<svg
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="1.7"
-			aria-hidden="true"
-		>
-			<path d="M3 10.5 12 3l9 7.5" stroke-linecap="round" stroke-linejoin="round" />
-			<path d="M5.5 9.5V20h13V9.5" stroke-linecap="round" stroke-linejoin="round" />
-		</svg>
+		<House size={18} strokeWidth={1.7} aria-hidden="true" />
 	{:else if name === 'book'}
-		<svg
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="1.7"
-			aria-hidden="true"
-		>
-			<path
-				d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v15H5.5A1.5 1.5 0 0 0 4 20.5z"
-				stroke-linejoin="round"
-			/>
-			<path
-				d="M20 5.5A1.5 1.5 0 0 0 18.5 4H13v15h5.5a1.5 1.5 0 0 1 1.5 1.5z"
-				stroke-linejoin="round"
-			/>
-		</svg>
+		<BookOpen size={18} strokeWidth={1.7} aria-hidden="true" />
 	{:else if name === 'list'}
-		<svg
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="1.7"
-			aria-hidden="true"
-		>
-			<path d="M8 6h12M8 12h12M8 18h12" stroke-linecap="round" />
-			<path d="M4 6h.01M4 12h.01M4 18h.01" stroke-linecap="round" />
-		</svg>
+		<List size={18} strokeWidth={1.7} aria-hidden="true" />
 	{:else if name === 'edit'}
-		<svg
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="1.7"
-			aria-hidden="true"
-		>
-			<path d="M4 20h4l10-10-4-4L4 16z" stroke-linecap="round" stroke-linejoin="round" />
-			<path d="m13.5 6.5 4 4" stroke-linecap="round" />
-		</svg>
+		<SquarePen size={18} strokeWidth={1.7} aria-hidden="true" />
 	{:else if name === 'signout'}
-		<svg
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="1.7"
-			aria-hidden="true"
-		>
-			<path d="M15 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8" stroke-linecap="round" />
-			<path d="M18 12H10m8 0-3-3m3 3-3 3" stroke-linecap="round" stroke-linejoin="round" />
-		</svg>
+		<LogOut size={18} strokeWidth={1.7} aria-hidden="true" />
 	{:else}
-		<svg
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="1.7"
-			aria-hidden="true"
-		>
-			<circle cx="12" cy="8.5" r="3.5" />
-			<path d="M5 20c0-3.3 3.1-5.5 7-5.5s7 2.2 7 5.5" stroke-linecap="round" />
-		</svg>
+		<CircleUserRound size={18} strokeWidth={1.7} aria-hidden="true" />
 	{/if}
 {/snippet}
 
@@ -203,16 +144,7 @@
 			aria-label="Open navigation"
 			onclick={() => (navOpen = true)}
 		>
-			<svg
-				viewBox="0 0 24 24"
-				width="18"
-				height="18"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="1.8"
-			>
-				<path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />
-			</svg>
+			<Menu size={18} strokeWidth={1.8} aria-hidden="true" />
 		</button>
 
 		{@render children()}
