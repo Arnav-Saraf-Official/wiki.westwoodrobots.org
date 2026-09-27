@@ -750,7 +750,10 @@ a.card,
 }
 
 .docs-nav__title {
+	display: block;
 	padding: 0 10px 6px;
+	border-left: 2px solid transparent;
+	border-radius: var(--radius-sm);
 	font-size: 0.6875rem;
 	font-weight: 700;
 	letter-spacing: 0.08em;
@@ -762,6 +765,22 @@ a.card,
 	background-repeat: no-repeat;
 	background-size: 26px 2px;
 	background-position: 10px 100%;
+	transition:
+		color 140ms var(--ease-out),
+		background-color 140ms var(--ease-out),
+		border-color 140ms var(--ease-out);
+}
+
+a.docs-nav__title:hover:not(.is-active) {
+	color: var(--text-muted);
+}
+
+/* Selected section: drop the underline and show the orange bar on the left. */
+.docs-nav__title.is-active {
+	color: var(--text);
+	background-color: var(--surface-2);
+	background-image: none;
+	border-left-color: var(--primary);
 }
 
 .docs-nav__group {
@@ -805,10 +824,6 @@ a.card,
 	color: #fff;
 	background: var(--surface-2);
 	border-left-color: var(--primary);
-	text-decoration: underline;
-	text-decoration-color: var(--primary);
-	text-decoration-thickness: 2px;
-	text-underline-offset: 4px;
 }
 
 .docs-sub {

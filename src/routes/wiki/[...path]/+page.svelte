@@ -90,7 +90,14 @@
 	<div class={depth === 0 ? 'docs-tree' : 'docs-sub'}>
 		{#each nodes as node (node.href)}
 			{#if node.type === 'section'}
-				<p class="docs-nav__title mt-4">{node.title}</p>
+				<a
+					href={resolve('/wiki/[...path]', { path: node.path })}
+					class="docs-nav__title mt-4"
+					class:is-active={isCurrent(node.path)}
+					aria-current={isCurrent(node.path) ? 'page' : undefined}
+				>
+					{node.title}
+				</a>
 				{@render navNodes(node.children, depth + 1)}
 			{:else if !isIndexName(node.name)}
 				<a
@@ -113,7 +120,14 @@
 <div class="page page-docs">
 	<div class="docs-layout">
 		<aside class="docs-nav">
-			<p class="docs-nav__title">Wiki</p>
+			<a
+				href={resolve('/wiki')}
+				class="docs-nav__title"
+				class:is-active={dirPath === ''}
+				aria-current={dirPath === '' ? 'page' : undefined}
+			>
+				Wiki
+			</a>
 			{#if docsTree.length > 0}
 				{@render navNodes(docsTree, 0)}
 			{:else}

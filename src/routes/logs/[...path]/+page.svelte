@@ -64,7 +64,14 @@
 	<div class={depth === 0 ? 'docs-tree' : 'docs-sub'}>
 		{#each nodes as node (node.path)}
 			{#if node.type === 'folder'}
-				<p class="docs-nav__title mt-4">{node.name}</p>
+				<a
+					href={resolve('/logs/[...path]', { path: node.path })}
+					class="docs-nav__title mt-4"
+					class:is-active={isCurrent(node.path)}
+					aria-current={isCurrent(node.path) ? 'page' : undefined}
+				>
+					{node.name}
+				</a>
 				{@render navNodes(node.children ?? [], depth + 1)}
 			{:else if !isIndexName(node.name)}
 				<a
