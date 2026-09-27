@@ -4,6 +4,7 @@
 	import { page } from '$app/state';
 	import { TEAMS, teamForPath } from '$lib/teams';
 	import { isIndexName } from '$lib/markdown';
+	import { pageTitle } from '$lib/site';
 	import DocHeader from '$lib/components/DocHeader.svelte';
 	import DocPager from '$lib/components/DocPager.svelte';
 	import type { GasTreeNode } from '$lib/server/gas';
@@ -15,6 +16,21 @@
 	let selectedTeam = $derived(teamForPath(currentPath) ?? TEAMS[0]);
 	let teamRoot = $derived(data.tree.find((node) => node.name === selectedTeam.folder));
 	let teamNodes = $derived(teamRoot?.children ?? []);
+
+	let tabTitle = $derived.by(() => {
+		switch (data.kind) {
+			case 'file':
+				return pageTitle(data.title);
+			case 'folder':
+				return pageTitle(data.node.name);
+			case 'root':
+				return pageTitle('Logs');
+			case 'missing':
+				return pageTitle('Not found');
+			default:
+				return pageTitle('Logs unavailable');
+		}
+	});
 
 	let crumbs = $derived.by(() => {
 		if (!currentPath) return [] as { label: string; path: string }[];
@@ -63,6 +79,10 @@
 		{/each}
 	</div>
 {/snippet}
+
+<svelte:head>
+	<title>{tabTitle}</title>
+</svelte:head>
 
 <div class="page page-docs">
 	<div class="docs-layout">

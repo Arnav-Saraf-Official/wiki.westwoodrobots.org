@@ -118,7 +118,7 @@
 <div class="app-shell" class:is-collapsed={collapsed}>
 	<aside class="app-nav" class:is-open={navOpen}>
 		<a href={resolve('/')} class="app-nav__brand" aria-label="WWRobo Wiki — home">
-			<img src={logo} alt="" width="20" height="20" />
+			<img src={logo} alt="" width="30" height="30" />
 			<span>WWRobo Wiki</span>
 		</a>
 

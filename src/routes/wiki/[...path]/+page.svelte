@@ -13,6 +13,7 @@
 		type DocNode
 	} from '$lib/docs';
 	import { fileLabel, isIndexName } from '$lib/markdown';
+	import { pageTitle } from '$lib/site';
 	import DocHeader from '$lib/components/DocHeader.svelte';
 	import DocPager from '$lib/components/DocPager.svelte';
 
@@ -27,6 +28,9 @@
 	let sectionIndex = $derived(currentFile ? undefined : indexFileOf(currentSection));
 	let activeFile = $derived(currentFile ?? sectionIndex);
 	let notFound = $derived(!activeFile && !currentSection);
+	let tabTitle = $derived(
+		pageTitle(activeFile?.title ?? currentSection?.title ?? 'Page not found')
+	);
 	let Doc = $derived(activeFile?.component);
 
 	let sectionChildren = $derived(
@@ -101,6 +105,10 @@
 		{/each}
 	</div>
 {/snippet}
+
+<svelte:head>
+	<title>{tabTitle}</title>
+</svelte:head>
 
 <div class="page page-docs">
 	<div class="docs-layout">

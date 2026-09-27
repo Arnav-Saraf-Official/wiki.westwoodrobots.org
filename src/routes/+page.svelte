@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { docsTree, docCount, type DocNode } from '$lib/docs';
+	import { pageTitle } from '$lib/site';
 	import { TEAMS } from '$lib/teams';
 
 	let { data } = $props();
@@ -17,13 +18,26 @@
 	}
 </script>
 
+<svelte:head>
+	<title>{pageTitle()}</title>
+</svelte:head>
+
 <div class="page">
 	<header class="max-w-2xl">
-		<h1>Westwood Robotics wiki</h1>
-		<p class="mt-3 text-[var(--text-muted)]">
-			Reference guides maintained in the repository, and live build logs from each team's Google
-			Drive folder.
-		</p>
+		<div class="flex gap-4">
+			<img
+				src="https://westwoodrobots.org/wwrobo.svg"
+				alt="Westwood Robotics Logo"
+				width="30"
+				height="30"
+			/>
+			<div class="flex flex-col">
+				<h1>Westwood Robotics wiki</h1>
+				<p class="mt-3 text-[var(--text-muted)]">
+					A curation of helpful guides and past journeys of Westwood Robotics Teams.
+				</p>
+			</div>
+		</div>
 		<div class="mt-6 flex flex-wrap items-center gap-2">
 			<a href={resolve('/wiki')} class="btn btn-primary">Browse the wiki</a>
 			<a href={resolve('/logs')} class="btn btn-ghost">Read logs</a>
@@ -38,7 +52,7 @@
 			<div>
 				<h2>Wiki</h2>
 				<p class="mt-1 text-sm text-[var(--text-muted)]">
-					{docCount} page{docCount === 1 ? '' : 's'}, organized into sections.
+					{docCount} page{docCount === 1 ? '' : 's'} to help you on your journey.
 				</p>
 			</div>
 			<a href={resolve('/wiki')} class="btn btn-ghost btn-sm">View all</a>
@@ -69,7 +83,7 @@
 		<div>
 			<h2>Logs</h2>
 			<p class="mt-1 text-sm text-[var(--text-muted)]">
-				Team build logs, match notes and design docs, editable by their members.
+				Read the journeys of Westwood Robotics Teams.
 			</p>
 		</div>
 
