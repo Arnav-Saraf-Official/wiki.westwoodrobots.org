@@ -12,7 +12,10 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
-		"gen": "wrangler types"
+		"gen": "wrangler types",
+		"gas:build": "tsc -p tsconfig.gas.json",
+		"gas:push": "bun run gas:build && cd appscript && clasp push",
+		"gas:deploy": "bun scripts/gas-deploy.ts"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
@@ -22,7 +25,9 @@
 		"@tailwindcss/forms": "^0.5.11",
 		"@tailwindcss/typography": "^0.5.19",
 		"@tailwindcss/vite": "^4.3.0",
+		"@types/google-apps-script": "^2.0.13",
 		"@types/node": "^24",
+		"@types/prismjs": "^1.26.6",
 		"eslint": "^10.4.1",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.19.0",
@@ -38,5 +43,10 @@
 		"typescript-eslint": "^8.60.1",
 		"vite": "^8.0.16",
 		"wrangler": "^4.97.0"
+	},
+	"dependencies": {
+		"marked": "^18.0.14",
+		"prism-svelte": "^0.5.0",
+		"prismjs": "^1.30.0"
 	}
 }

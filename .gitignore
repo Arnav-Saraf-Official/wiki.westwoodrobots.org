@@ -19,6 +19,9 @@ Thumbs.db
 !.env.test
 .clasp.json
 
+# Google Apps Script build output
+appscript/Code.js
+
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
