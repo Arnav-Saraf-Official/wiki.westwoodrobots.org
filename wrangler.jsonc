@@ -4,6 +4,15 @@
 	"compatibility_date": "2026-09-26",
 	"compatibility_flags": ["nodejs_als"],
 	"main": ".svelte-kit/cloudflare/_worker.js",
+	"vars": {
+		"GAS_API_URL": "https://script.google.com/macros/s/AKfycbw5C63f6MRoP2nKClBZlw5E9GEGly9hrx_S4tIgGMsjPJ5ph1QwyULPLtIPA3OBwQ9f/exec",
+		"GOOGLE_CLIENT_ID": "847479988180-j3j981bfmc9p54i5odt06gdfpkre0c18.apps.googleusercontent.com",
+		"SLING_EDITORS": "user1@example.com,user2@example.com",
+		"HUNGA_EDITORS": "reacharnavsaraf@gmail.com, ayansaraf343@gmail.com",
+		"ATL_EDITORS": "user3@example.com,user4@example.com",
+		"KUNAI_EDITORS": "user5@example.com,user6@example.com",
+		"ADMINS": "reacharnavsaraf@gmail.com, westwood_robotics@roundrockisd.org"
+	},
 	"assets": {
 		"binding": "ASSETS",
 		"directory": ".svelte-kit/cloudflare"
